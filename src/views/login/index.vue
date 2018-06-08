@@ -33,16 +33,16 @@
         <span>{{$t('login.password')}} : {{$t('login.any')}}</span>
       </div>
 
-      <el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>
+      <!--<el-button class="thirdparty-button" type="primary" @click="showDialog=true">{{$t('login.thirdparty')}}</el-button>-->
     </el-form>
 
-    <el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>
-      {{$t('login.thirdpartyTips')}}
-      <br/>
-      <br/>
-      <br/>
-      <social-sign />
-    </el-dialog>
+    <!--<el-dialog :title="$t('login.thirdparty')" :visible.sync="showDialog" append-to-body>-->
+      <!--{{$t('login.thirdpartyTips')}}-->
+      <!--<br/>-->
+      <!--<br/>-->
+      <!--<br/>-->
+      <!--<social-sign />-->
+    <!--</el-dialog>-->
 
   </div>
 </template>
@@ -50,10 +50,10 @@
 <script>
 import { isvalidUsername } from '@/utils/validate'
 import LangSelect from '@/components/LangSelect'
-import SocialSign from './socialsignin'
+// import SocialSign from './socialsignin'
 
 export default {
-  components: { LangSelect, SocialSign },
+  components: { LangSelect},
   name: 'login',
   data() {
     const validateUsername = (rule, value, callback) => {

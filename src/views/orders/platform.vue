@@ -5,7 +5,6 @@
 </template>
 
 <script>
-    import {findItem} from '@/api/item'
 
     export default {
         data() {
