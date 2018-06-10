@@ -27,6 +27,7 @@ import Layout from '@/views/layout/Layout'
   }
  **/
 export const constantRouterMap = [
+    {path: '/init', component: () => import('@/views/signInPlatform/index'), hidden: true},
     {path: '/login', component: () => import('@/views/login/index'), hidden: true},
     {path: '/authredirect', component: () => import('@/views/login/authredirect'), hidden: true},
     {path: '/404', component: () => import('@/views/errorPage/404'), hidden: true},
@@ -93,7 +94,7 @@ export const asyncRouterMap = [
             }
         }]
     },
-    
+
     {
         path: '/orders',
         component: Layout,
@@ -122,7 +123,7 @@ export const asyncRouterMap = [
             }
         }]
     },
-    
+
     {
         path: '/settings',
         component: Layout,
@@ -151,8 +152,8 @@ export const asyncRouterMap = [
             }
         }]
     },
-    
-    
+
+
     // {
     //     path: '/permission',
     //     component: Layout,
@@ -181,7 +182,7 @@ export const asyncRouterMap = [
     //         }
     //     }]
     // },
-    
+
     // {
     //   path: '/icon',
     //   component: Layout,
@@ -264,7 +265,7 @@ export const asyncRouterMap = [
     //     { path: 'complex-table', component: () => import('@/views/table/complexTable'), name: 'complexTable', meta: { title: 'complexTable' }}
     //   ]
     // },
-    
+
     // {
     //   path: '/example',
     //   component: Layout,
@@ -347,6 +348,6 @@ export const asyncRouterMap = [
     //   component: Layout,
     //   children: [{ path: 'index', component: () => import('@/views/i18n-demo/index'), name: 'i18n', meta: { title: 'i18n', icon: 'international' }}]
     // },
-    
+
     {path: '*', redirect: '/404', hidden: true}
 ]
