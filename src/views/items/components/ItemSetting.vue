@@ -35,6 +35,21 @@
                     <el-input type="number" v-model="itemForm.balance"></el-input>
                 </el-form-item>
 
+                <el-form-item label="商品图片">
+                    <el-upload
+                        class="upload-demo"
+                        action="http://192.168.1.102:5757/weapp/upload"
+                        :auto-upload="true"
+                        :on-preview="handlePreview"
+                        :on-remove="handleRemove"
+                        :on-success="handleUploadSuccess"
+                        :file-list="fileList"
+                        list-type="picture">
+                        <el-button size="small" type="primary">点击上传</el-button>
+                        <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
+                    </el-upload>
+                </el-form-item>
+
                 <el-form-item>
                     <el-button type="primary" @click="submitForm('itemForm')">立即创建</el-button>
                     <el-button @click="resetForm('itemForm')">重置</el-button>
@@ -167,6 +182,7 @@
 </template>
 
 <script>
+    import config from '@/api/config'
     import {addItem, findItem, removeItem, updateItem} from "@/api/item";
 
     export default {
@@ -208,7 +224,7 @@
                     ],
                 },
 
-                search:'',
+                search: '',
 
                 tableData: [
                     {
@@ -316,10 +332,12 @@
 
                 ],
 
-                dialogVisible: false
+                dialogVisible: false,
+
+                fileList: []
             };
         },
-        created(){
+        created() {
 
         },
         methods: {
@@ -327,7 +345,7 @@
                 this.$refs[formName].validate((valid) => {
                     if (valid) {
                         this.itemForm.platform_id = 20
-                        addItem(this.itemForm).then(response=>{
+                        addItem(this.itemForm).then(response => {
                             const data = response.data
                             console.log(data)
                         })
@@ -359,6 +377,21 @@
                     })
                     .catch(_ => {
                     });
+            },
+
+            handleRemove(file, fileList) {
+                // console.log(file, fileList);
+            },
+            handlePreview(file) {
+                // console.log(file);
+            },
+
+            handleUploadSuccess(res){
+                let url = 'http://'+res.data.url
+                let name = res.data.name
+                this.fileList.push({name:name,url:url})
+                console.log(this.fileList)
+
             }
         }
     }
